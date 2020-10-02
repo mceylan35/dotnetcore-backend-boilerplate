@@ -10,7 +10,7 @@ namespace Core.DataAccess
     {
         T Get(Expression<Func<T, bool>> filter);
         T GetById(Guid Id);
-        IList<T> GetAll();
+        IList<T> GetAll(Expression<Func<T, bool>> filter=null);
         T Add(T entity);
         T Update(T entity);
         bool Delete(T entity);
