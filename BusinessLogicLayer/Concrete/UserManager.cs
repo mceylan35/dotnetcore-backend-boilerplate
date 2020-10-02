@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Abstract;
+using Core.Utilities.Results;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.EntityFramework;
 using Entities;
@@ -15,29 +16,30 @@ namespace BusinessLogicLayer.Concrete
         {
             _userDal = userdal;
         }
-        public User Add(User user)
+        public IDataResult<User> Add(User user)
         {
-            return _userDal.Add(user);
+            return new SuccessDataResult<User>(_userDal.Add(user));
         }
 
-        public bool Delete(User user)
+        public IResult Delete(User user)
         {
-            return _userDal.Delete(user);
+            _userDal.Delete(user);
+            return new SuccessResult("Ürün Silindi");
         }
 
-        public User GetById(Guid id)
+        public IDataResult<User> GetById(Guid id)
         {
-            return _userDal.GetById(id);
+            return new SuccessDataResult<User>(_userDal.GetById(id));
         }
 
-        public IList<User> GetList()
+        public IDataResult<IList<User>> GetList()
         {
-            return _userDal.GetAll() ;
+            return new SuccessDataResult<IList<User>>(_userDal.GetAll());
         }
 
-        public User Update(User user)
+        public IDataResult<User> Update(User user)
         {
-            return _userDal.Update(user);
+            return new SuccessDataResult<User>(_userDal.Update(user));
         }
     }
 }

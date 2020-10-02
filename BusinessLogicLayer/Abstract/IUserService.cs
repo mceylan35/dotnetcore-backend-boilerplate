@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using Core.Utilities.Results;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,11 +8,11 @@ namespace BusinessLogicLayer.Abstract
 {
     public interface IUserService
     {
-        IList<User> GetList();
-        User GetById(Guid id);
-        User Add(User user);
-        User Update(User user);
-        bool Delete(User user);
+        IDataResult<IList<User>> GetList();
+        IDataResult<User> GetById(Guid id);
+        IDataResult<User> Add(User user);
+        IDataResult<User> Update(User user);
+        IResult Delete(User user);
         
 
 
